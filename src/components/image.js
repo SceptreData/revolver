@@ -19,7 +19,6 @@ const Image = ({ name, objectFit = "cover", alt = "" }) => (
       }
     `}
     render={data => {
-      console.log(typeof name, name)
       if (name && name.includes("/")) {
         const path = name.split("/")
         name = path[path.length - 1]

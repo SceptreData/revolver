@@ -15,7 +15,7 @@ This website runs off of a technology called Gatsby and React.
 
 React makes it easier to build big websites. Gatsby
 transforms react into pure HTML which makes the site
-CRAZY FAST. It does all sorts of cool optimizations in the background which give us faster speeds.
+very fast. It does all sorts of cool optimizations in the background which give us faster speeds.
 
 If you've reached the point where you need to make a major
 change to the website and you are the new "web guy", you can see a list of the packages used to make this project in the package.json file.
