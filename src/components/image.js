@@ -2,7 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import { StaticQuery, graphql } from "gatsby"
 
-const Image = ({ name, objectFit = "cover" }) => (
+const Image = ({ name, objectFit = "cover", alt = "" }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -19,6 +19,7 @@ const Image = ({ name, objectFit = "cover" }) => (
       }
     `}
     render={data => {
+      console.log(typeof name, name)
       if (name && name.includes("/")) {
         const path = name.split("/")
         name = path[path.length - 1]
@@ -30,7 +31,13 @@ const Image = ({ name, objectFit = "cover" }) => (
       if (!img) {
         return null
       }
-      return <Img fluid={img.node.fluid} imgStyle={{ objectFit: objectFit }} />
+      return (
+        <Img
+          fluid={img.node.fluid}
+          imgStyle={{ objectFit: objectFit }}
+          alt={alt !== "" ? alt : name}
+        />
+      )
     }}
   />
 )

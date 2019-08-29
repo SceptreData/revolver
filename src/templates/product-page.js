@@ -7,13 +7,11 @@ import SEO from "../components/seo"
 import ProductSquare from "../components/ProductSquare"
 import ResponsiveSlider from "../components/ResponsiveSlider"
 import { cleanProducts } from "../components/SliderData"
+import { removeWhiteSpace } from "../components/util"
+import { buildTags } from "../components/tags"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
-
-function removeWhiteSpace(str) {
-  return str.replace(/\s+/g, "")
-}
 
 const ProductPageTemplate = ({ data }) => {
   const { markdownRemark, allMarkdownRemark } = data
@@ -35,14 +33,15 @@ const ProductPageTemplate = ({ data }) => {
     prod => prod.name !== name
   )
 
-  const tagItems = tags
-    .map(tag => {
-      if (tag.length > 0)
-        return <li key={tag}>{`#${removeWhiteSpace(tag)}`}</li>
-      return null
-    })
-    .filter(elt => elt !== undefined)
+  // const tagItems = tags
+  //   .map(tag => {
+  //     if (tag.length > 0)
+  //       return <li key={tag}>{`#${removeWhiteSpace(tag)}`}</li>
+  //     return null
+  //   })
+  //   .filter(elt => elt !== undefined)
 
+  const tagItems = buildTags(tags)
   if (mediaUrl === " ") mediaUrl = undefined
 
   return (

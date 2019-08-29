@@ -7,7 +7,37 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-relative-images`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1500,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-copy-linked-files`,
+            options: {
+              destinationDir: `${__dirname}/static`,
+            },
+          },
+          `gatsby-remark-smartypants`,
+          `gatsby-remark-behead`,
+        ],
+      },
+    },
     // The following section tells Gatsby where to find our files
     // They are then loaded and can be accessed with graphql.
     {
@@ -42,48 +72,10 @@ module.exports = {
     },
 
     // These plugins are related to making blog posts out of mark down files.
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-relative-images`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1500,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          {
-            resolve: `gatsby-remark-copy-linked-files`,
-            options: {
-              destinationDir: `${__dirname}/static`,
-            },
-          },
-          `gatsby-remark-smartypants`,
-          `gatsby-remark-behead`,
-        ],
-      },
-    },
+
     // The following plugins handle images and Json files
     "gatsby-transformer-json",
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/img`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

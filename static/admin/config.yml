@@ -11,6 +11,34 @@ public_folder: /assets
 
 collections:
   # Static Pages
+  - name: "news"
+    label: "News"
+    label_singular: "News Post"
+    identifier_field: name
+    create: true
+    folder: "src/pages/news"
+    summary: "{{title}} -- {{year}}/{{month}}/{{day}}"
+    slug: "{{slug}}_{{year}}-{{month}}-{{day}}"
+    fields:
+      - {
+        label: "Template Key",
+        name: "templateKey",
+        widget: hidden,
+        default: "news-post"
+      }
+      - {label: "News Post Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string", required: true, default: "Revolver Inc."}
+      - {label: "Publish Date", name: date, widget: datetime} 
+      - {label: "Featured Image", name: image, widget: image, required: true, default: "/src/img/record-store.png", description: "Use this to set the Main image for your news article. It will be used as a thumbnail elsewhere on the site. NOTE: There is no limit to how many images you can have in an article. Insert additional images in the 'Body' component."}
+      - {label: "Body", name: "body", widget: "markdown", description: "This is where the content of your article goes. You can use the text-editor interface to insert additional images, tables and links."}
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          hint: "Write tags to describe the object. Separate tags with a comma."
+        }
+      - {label: "SEO Description", name: "description", widget: 'text', description: "Provide a brief description of the news post. Use keywords. This helps your news posts show up in relevant google searches.", hint: "Example: Two for One sale on all vinyl, CD's and Cassttes.  Sale ends: 01/09/2019"}
+
   - name: "pages"
     label: "Pages"
     delete: false
