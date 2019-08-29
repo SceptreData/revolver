@@ -52,6 +52,7 @@ export const pageQuery = graphql`
             tags
             image {
               relativePath
+              publicURL
               name
             }
           }

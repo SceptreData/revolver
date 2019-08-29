@@ -1,0 +1,31 @@
+.news-roll {
+    list-style-type: none;
+    a, a:visited {
+      color: #222;
+      text-decoration: none;
+    }
+}
+
+.news-item{
+  
+  h2 {
+    font-size: 1.953rem;
+    margin-bottom: 0;
+  }
+  span, time {
+    font-weight: 300;
+    font-size: .7rem;
+  }
+  time {
+    font-size: .8rem;
+    font-weight: 500;
+  }
+  .news-item-author{
+    font-size: .8rem;
+    font-weight: 500;
+    margin-right: 2rem;
+  }
+  ul {
+    display: flex;
+  }
+}

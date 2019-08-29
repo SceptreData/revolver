@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import moment from "moment"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -8,8 +9,9 @@ import SEO from "../components/seo"
 const NewsPostTemplate = ({ data }) => {
   const { markdownRemark } = data
   const { html, frontmatter } = markdownRemark
-  const { title, author, date, image, description } = frontmatter
+  const { title, author, date: dateStr, image, description } = frontmatter
 
+  const date = moment(dateStr).format("DD MMMM, YYYY")
   return (
     <Layout>
       <SEO
@@ -49,6 +51,7 @@ export const pageQuery = graphql`
         description
         image {
           relativePath
+          publicURL
           name
         }
       }
